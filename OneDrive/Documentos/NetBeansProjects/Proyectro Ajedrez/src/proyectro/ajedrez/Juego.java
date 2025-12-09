@@ -122,7 +122,30 @@ public class Juego {
 
         }
     }
+    private boolean intentarmovimiento(int r1, int c1, int r2, int c2){
+        Pieza p=tablero[r1][c1];
+        if(p==null){
+            System.out.println("No hay ninguna pieza en esa casilla");
+            return false;
+        }
+        
+        if(p.color!=turno){
+            System.out.println("Turno incorrecto.");
+            return false;
+            
+        }
+        
+        if(!movimientovalido(p,r1,c1,r2,c2)){
+            System.out.println("Movimiento invalido.");
+            return false;
+        }
+        
+        Pieza destinoGuardado=tablero[r2][c2];
+        tablero[r2][c2]=p;
+         tablero[r1][c1]=null;
+        
+        
+    }
     
     
-
 }
