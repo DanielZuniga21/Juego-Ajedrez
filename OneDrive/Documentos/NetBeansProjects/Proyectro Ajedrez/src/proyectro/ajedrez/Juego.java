@@ -144,6 +144,40 @@ public class Juego {
         tablero[r2][c2]=p;
          tablero[r1][c1]=null;
         
+          if (reyEnJaque(turno)) {
+            tablero[r1][c1] = p;
+            tablero[r2][c2] = destinoGuardado;
+            System.out.println("Tu rey quedaría en jaque. Movimiento no permitido.");
+            return false;
+        }
+
+        if (destinoGuardado != null) {
+            capturadas.add(destinoGuardado.toString());
+            System.out.println("Capturaste: " + destinoGuardado.toString());
+        }
+
+        if (p.tipo == 'P') {
+            if (p.color == 'w' && r2 == 0) tablero[r2][c2] = new Pieza('Q', 'w');
+            if (p.color == 'b' && r2 == 7) tablero[r2][c2] = new Pieza('Q', 'b');
+        }
+
+        return true;
+    }
+
+    private int[] convertirAlgebraico(String s) {
+        s = s.trim().toLowerCase();
+        if (s.length() != 2) return null;
+
+        char archivo = s.charAt(0);
+        char fila = s.charAt(1);
+
+        if (archivo < 'a' || archivo > 'h' || fila < '1' || fila > '8') return null;
+
+        int col = archivo - 'a';
+        int row = 8 - (fila - '0');
+
+        return new int[]{row, col};
+    }
         
     }
     
