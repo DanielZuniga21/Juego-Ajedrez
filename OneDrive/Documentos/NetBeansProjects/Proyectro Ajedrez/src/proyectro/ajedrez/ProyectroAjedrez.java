@@ -4,7 +4,7 @@
  */
 package proyectro.ajedrez;
 
-import java.util.Scanner;
+
 
 /**
  *
@@ -16,7 +16,9 @@ public class ProyectroAjedrez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
+     Juego juego = new Juego();
+        juego.iniciar();
+        
     
     }
     
